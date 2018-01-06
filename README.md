@@ -1,2 +1,2 @@
-# libtorrent_setup
+# Libtorrent Setup
 libtorrent installation guide
