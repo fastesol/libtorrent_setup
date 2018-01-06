@@ -1,0 +1,19 @@
+# NOTE: This guide is for CentOS 7.x AND Python 2.7 ONLY (libtorrent requires Python 2.7)
+
+yum install -y boost boost-devel
+yum install -y make gcc gcc-c++ kernel-devel python-devel
+cd /tmp
+mkdir libtorrent
+cd libtorrent
+wget https://github.com/arvidn/libtorrent/releases/download/libtorrent-1_1_4/libtorrent-rasterbar-1.1.4.tar.gz
+tar zxvf libtorrent-rasterbar-1.1.4.tar.gz
+rm -rf libtorrent-rasterbar-1.1.4.tar.gz
+cd libtorrent-rasterbar-1.1.4
+
+
+./configure --disable-debug --with-boost-libdir=/usr/lib64 --disable-encryption --enable-python-binding --with-boost-python
+make && make install
+export LD_LIBRARY_PATH=/usr/local/lib/
+cd bindings/python
+python setup.py build
+python setup.py install
